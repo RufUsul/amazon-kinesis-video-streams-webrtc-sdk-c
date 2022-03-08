@@ -156,16 +156,16 @@ if(BUILD_DEPENDENCIES)
     build_dependency(gperftools)
   endif()
 
-  # building kvsCommonLws also builds kvspic
-  set(BUILD_ARGS
-      -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
-      -DUSE_OPENSSL=${USE_OPENSSL}
-      -DUSE_MBEDTLS=${USE_MBEDTLS}
-      -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS})
-  build_dependency(kvsCommonLws ${BUILD_ARGS})
-
   message(STATUS "Finished building dependencies.")
 endif()
+
+# building kvsCommonLws also builds kvspic
+set(BUILD_ARGS
+    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
+    -DUSE_OPENSSL=${USE_OPENSSL}
+    -DUSE_MBEDTLS=${USE_MBEDTLS}
+    -DCMAKE_C_FLAGS=${CMAKE_C_FLAGS})
+build_dependency(kvsCommonLws ${BUILD_ARGS})
 
 ############# find dependent libraries ############
 
